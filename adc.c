@@ -14,3 +14,7 @@ void adcInit(void) {
 	ADC1_Cmd(ENABLE);
 	ADC1_StartConversion();
 }
+
+uint8_t getAdcData(void) {
+	return (uint8_t)(ADC1_GetConversionValue()>>2);
+}
