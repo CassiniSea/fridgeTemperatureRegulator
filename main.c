@@ -30,9 +30,7 @@ uint8_t targetAdcCount = 0;
 uint8_t programStatus = STARTING;
 uint32_t programTime = 0;
 
-@far @interrupt void tim1Update(void)	{
-	TIM1_ClearITPendingBit(TIM1_IT_UPDATE);
-	//GPIO_WriteReverse(LED_PORT, LED_PIN);
+void tim1Update(void)	{
 	adcData = (uint8_t)(ADC1_GetConversionValue()>>2);
 	if(adcData >= TARGETADC) {
 		if(targetAdcCount < TARGETADCCOUNTMAX) {
@@ -80,14 +78,6 @@ uint32_t programTime = 0;
 
 main() {
 	init();
-
-	TIM1_DeInit();
-	TIM1_TimeBaseInit(	16000,
-											TIM1_COUNTERMODE_UP,
-											1000,
-											0);
-	TIM1_ITConfig(TIM1_IT_UPDATE, ENABLE);
-	TIM1_Cmd(ENABLE);
 	
 	ADC1_DeInit();
 	ADC1_Init(	ADC1_CONVERSIONMODE_CONTINUOUS,
@@ -101,7 +91,6 @@ main() {
 	ADC1_Cmd(ENABLE);
 	ADC1_StartConversion();
 	
-	//GPIO_Init(LED_PORT, LED_PIN, GPIO_MODE_OUT_PP_LOW_FAST);
 	GPIO_Init(SWITCH_PORT, SWITCH_PIN, GPIO_MODE_OUT_PP_HIGH_FAST);
 	
 	enableInterrupts();

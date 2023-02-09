@@ -341,6 +341,11 @@ Next=Root.Source Files.stm8_interrupt_vector.c
 [Root.Source Files.stm8_interrupt_vector.c]
 ElemType=File
 PathName=stm8_interrupt_vector.c
+Next=Root.Source Files.tim1.c
+
+[Root.Source Files.tim1.c]
+ElemType=File
+PathName=tim1.c
 Next=Root.Source Files.uart.c
 
 [Root.Source Files.uart.c]
@@ -573,6 +578,11 @@ Next=Root.Include Files.main.h
 [Root.Include Files.main.h]
 ElemType=File
 PathName=main.h
+Next=Root.Include Files.tim1.h
+
+[Root.Include Files.tim1.h]
+ElemType=File
+PathName=tim1.h
 Next=Root.Include Files.uart.h
 
 [Root.Include Files.uart.h]
