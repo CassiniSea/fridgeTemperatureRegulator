@@ -1,7 +1,17 @@
-#ifndef __MAIN_H
-#define __MAIN_H
-
-@far @interrupt void uartReceive(void);
-@far @interrupt void tim1Update(void);
-
-#endif
+// 600
+#define STARTINGTIME 600
+// 400
+#define WORKINGTIME 400
+// 700
+#define RESTINGTIME 700
+#define STARTING 0
+#define WORKING 1
+#define RESTING 2
+//115
+#define TARGETADC 115
+// 10
+#define TARGETADCCOUNTMAX 10
+#define LED_PIN (GPIO_PIN_5)
+#define LED_PORT (GPIOB)
+#define SWITCH_PIN (GPIO_PIN_4)
+#define SWITCH_PORT (GPIOD)

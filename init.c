@@ -3,11 +3,13 @@
 #include "uart.h"
 #include "tim1.h"
 #include "adc.h"
+#include "gpio.h"
 
 void init() {
 	clkInit();
 	uartInit();
 	tim1Init();
 	adcInit();
+	gpioInit();
 	enableInterrupts();
 }
