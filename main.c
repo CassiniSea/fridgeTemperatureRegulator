@@ -4,12 +4,12 @@
 #include "uart.h"
 #include "adc.h"
 
-uint8_t adcData;
 uint8_t targetAdcCount = 0;
 uint8_t programStatus = STARTING;
 uint32_t programTime = 0;
 
 void updateTargetAdcCount(void) {
+	uint8_t adcData;
 	adcData = getAdcData();
 	if(adcData >= TARGETADC) {
 		if(targetAdcCount < TARGETADCCOUNTMAX) {
