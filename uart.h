@@ -1,11 +1,24 @@
 /*
+To start using
+Open stm8_interrupt_vector.c and add
+UART_TX_COMPLATE_INTERRUPT_VECTOR to irq17
+UART_RECEIVE8_INTERRUPT_VECTOR to irq18
+
+To send a byte use
+void uartSendByte(uint8_t byte)
+
+To send a string use
+void uartSendString(char* str)
+*/
+
+/*
 If you want to receive STRING by uart
 define a UART_RECEIVE_STRING_ENABLE and
 define a void uartStringReceived(char* str) function
 
-else if you want receive a BYTE by uart
+If you want receive a BYTE by uart
 define a UART_RECEIVE_BYTE_ENABLE and
-define a void uartReceive8(uint8_t c) function
+define a void uartReceiveByte(uint8_t byte) function
 
 WARNING: You can only use one option, not both.
 */
@@ -43,9 +56,9 @@ use uartSendStringAsync(char* str) function
 #endif 
 
 void uartInit(void);
-void uartTransmit(uint8_t);
+void uartSendByte(uint8_t);
 void uartSendString(char*);
 void uartSendStringAsync(char*);
 void uartTxComplete(void);
 void uartStringReceived(char*);
-void uartReceive8(uint8_t);
+void uartReceiveByte(uint8_t);

@@ -44,8 +44,8 @@ uint32_t programTime = 0;
 			targetAdcCount--;
 		}
 	}
-	uartTransmit(adcData);
-	uartTransmit(targetAdcCount);
+	uartSendByte(adcData);
+	uartSendByte(targetAdcCount);
 	switch(programStatus) {
 		case STARTING:
 			programTime++;

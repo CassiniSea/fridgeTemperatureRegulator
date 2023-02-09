@@ -24,14 +24,14 @@ void uartInit(void) {
 	UART1_Cmd(ENABLE);
 }
 
-void uartTransmit(uint8_t data) {
+void uartSendByte(uint8_t byte) {
 	while(!UART1_GetFlagStatus(UART1_FLAG_TXE));
-	UART1_SendData8(data);
+	UART1_SendData8(byte);
 }
 
 void uartSendString(char* str) {
 	while(*str) {
-		uartTransmit(*str++);
+		uartSendByte(*str++);
 	}
 }
 
@@ -52,14 +52,14 @@ void uartTxComplete(void) {
 #endif
 
 #ifdef UART_RECEIVE_STRING_ENABLE
-void uartReceive8(uint8_t c) {
-	if(c == '\r' || __uartBufferIndex >= UART_MAX_STRING_LENGTH) {
-		__uartBuffer[__uartBufferIndex] = c;
+void uartReceiveByte(uint8_t byte) {
+	if(byte == '\r' || __uartBufferIndex >= UART_MAX_STRING_LENGTH) {
+		__uartBuffer[__uartBufferIndex] = byte;
 		__uartBufferIndex = 0;
 		uartStringReceived(__uartBuffer);
 	}
 	else {
-		__uartBuffer[__uartBufferIndex++] = c;
+		__uartBuffer[__uartBufferIndex++] = byte;
 	}
 }
 #endif
