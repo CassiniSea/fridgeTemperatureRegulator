@@ -4,6 +4,7 @@
  */
 
 #include "stm8s.h"
+#include "init.h"
 
 // 600
 #define STARTINGTIME 600
@@ -88,7 +89,7 @@ void uartTransmit(uint8_t data){
 }
 
 main() {
-	CLK_HSIPrescalerConfig(CLK_PRESCALER_HSIDIV1|CLK_PRESCALER_CPUDIV1);
+	init();
 	
 	UART1_DeInit();
 	UART1_Init(	57600,
