@@ -10,3 +10,10 @@ void tim1Init(void) {
 	TIM1_ITConfig(TIM1_IT_UPDATE, ENABLE);
 	TIM1_Cmd(ENABLE);	
 }
+
+#if defined(TIM1_UPDATE_INTERRUPT_ENABLE)
+	INTERRUPT void TIM1_UPDATE_INTERRUPT_VECTOR(void) {
+		TIM1_ClearITPendingBit(TIM1_IT_UPDATE);
+		tim1Update();	
+	}
+#endif

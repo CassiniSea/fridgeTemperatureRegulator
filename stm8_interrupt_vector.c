@@ -2,8 +2,8 @@
  *	Copyright (c) 2007 STMicroelectronics
  */
 
-#include "main.h"
-#include "interrupts.h"
+#include "uart.h"
+#include "tim1.h"
 
 typedef void @far (*interrupt_handler_t)(void);
 
