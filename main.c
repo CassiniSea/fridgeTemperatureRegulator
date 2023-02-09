@@ -57,7 +57,5 @@ void tim1Update(void)	{
 main() {
 	init();	
 	
-	enableInterrupts();
-	
 	while (1);
 }
