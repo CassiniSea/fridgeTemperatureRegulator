@@ -1,6 +1,7 @@
 /*
-To start using
 Open stm8_interrupt_vector.c and add
+#include "uart.h"
+and
 UART_TX_COMPLATE_INTERRUPT_VECTOR to irq17
 UART_RECEIVE8_INTERRUPT_VECTOR to irq18
 

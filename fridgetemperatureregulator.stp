@@ -292,7 +292,7 @@ String.6.0=2023,2,5,15,53,32
 ElemType=Folder
 PathName=Source Files\SPL
 Child=Root.Source Files.Source Files\SPL...\stm8s_stdperiph_driver\src\stm8s_adc1.c
-Next=Root.Source Files.clk.c
+Next=Root.Source Files.adc.c
 
 [Root.Source Files.Source Files\SPL...\stm8s_stdperiph_driver\src\stm8s_adc1.c]
 ElemType=File
@@ -318,6 +318,11 @@ Next=Root.Source Files.Source Files\SPL...\stm8s_stdperiph_driver\src\stm8s_uart
 ElemType=File
 PathName=..\stm8s_stdperiph_driver\src\stm8s_uart1.c
 
+[Root.Source Files.adc.c]
+ElemType=File
+PathName=adc.c
+Next=Root.Source Files.clk.c
+
 [Root.Source Files.clk.c]
 ElemType=File
 PathName=clk.c
@@ -326,11 +331,6 @@ Next=Root.Source Files.init.c
 [Root.Source Files.init.c]
 ElemType=File
 PathName=init.c
-Next=Root.Source Files.interrupts.c
-
-[Root.Source Files.interrupts.c]
-ElemType=File
-PathName=interrupts.c
 Next=Root.Source Files.main.c
 
 [Root.Source Files.main.c]
@@ -558,6 +558,11 @@ Next=Root.Include Files...\stm8s_stdperiph_driver\inc\stm8s_wwdg.h
 [Root.Include Files...\stm8s_stdperiph_driver\inc\stm8s_wwdg.h]
 ElemType=File
 PathName=..\stm8s_stdperiph_driver\inc\stm8s_wwdg.h
+Next=Root.Include Files.adc.h
+
+[Root.Include Files.adc.h]
+ElemType=File
+PathName=adc.h
 Next=Root.Include Files.clk.h
 
 [Root.Include Files.clk.h]
@@ -568,11 +573,6 @@ Next=Root.Include Files.init.h
 [Root.Include Files.init.h]
 ElemType=File
 PathName=init.h
-Next=Root.Include Files.interrupts.h
-
-[Root.Include Files.interrupts.h]
-ElemType=File
-PathName=interrupts.h
 Next=Root.Include Files.main.h
 
 [Root.Include Files.main.h]
