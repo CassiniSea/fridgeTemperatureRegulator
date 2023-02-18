@@ -105,7 +105,7 @@ String.3.0=clnk $(ToolsetLibOpts) -o $(OutputPath)$(TargetSName).sm8 -fakeIntege
 String.3.1=cvdwarf $(OutputPath)$(TargetSName).sm8
 String.4.0=$(OutputPath)$(TargetFName)
 String.5.0=$(OutputPath)$(ProjectSFile).elf $(OutputPath)$(TargetSName).map
-String.6.0=2023,2,5,15,55,34
+String.6.0=2023,2,10,1,18,39
 String.100.0=
 String.101.0=crtsi.st7
 String.102.0=+seg .const -b 0x8080 -m 0x1f80 -n .const -it
@@ -326,6 +326,11 @@ Next=Root.Source Files.clk.c
 [Root.Source Files.clk.c]
 ElemType=File
 PathName=clk.c
+Next=Root.Source Files.fridge.c
+
+[Root.Source Files.fridge.c]
+ElemType=File
+PathName=fridge.c
 Next=Root.Source Files.gpio.c
 
 [Root.Source Files.gpio.c]
@@ -341,6 +346,11 @@ Next=Root.Source Files.main.c
 [Root.Source Files.main.c]
 ElemType=File
 PathName=main.c
+Next=Root.Source Files.program.c
+
+[Root.Source Files.program.c]
+ElemType=File
+PathName=program.c
 Next=Root.Source Files.stm8_interrupt_vector.c
 
 [Root.Source Files.stm8_interrupt_vector.c]
@@ -578,6 +588,16 @@ Next=Root.Include Files.clk.h
 [Root.Include Files.clk.h]
 ElemType=File
 PathName=clk.h
+Next=Root.Include Files.common.h
+
+[Root.Include Files.common.h]
+ElemType=File
+PathName=common.h
+Next=Root.Include Files.fridge.h
+
+[Root.Include Files.fridge.h]
+ElemType=File
+PathName=fridge.h
 Next=Root.Include Files.gpio.h
 
 [Root.Include Files.gpio.h]
@@ -593,6 +613,11 @@ Next=Root.Include Files.main.h
 [Root.Include Files.main.h]
 ElemType=File
 PathName=main.h
+Next=Root.Include Files.program.h
+
+[Root.Include Files.program.h]
+ElemType=File
+PathName=program.h
 Next=Root.Include Files.tim1.h
 
 [Root.Include Files.tim1.h]

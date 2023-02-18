@@ -1,5 +1,7 @@
 #include "stm8s.h"
 #include "tim1.h"
+#include "program.h"
+#include "adc.h"
 
 void tim1Init(void) {
 	TIM1_DeInit();
@@ -15,5 +17,11 @@ void tim1Init(void) {
 	INTERRUPT void TIM1_UPDATE_INTERRUPT_VECTOR(void) {
 		TIM1_ClearITPendingBit(TIM1_IT_UPDATE);
 		tim1Update();	
+	}
+	
+	void tim1Update(void)	{
+		updateTargetAdcCount();
+		updateProgramStatus();
+		sendStats();
 	}
 #endif

@@ -2,12 +2,12 @@
 #include "uart.h"
 
 #ifdef UART_SEND_STRING_ASYNC_ENABLE
-char* __uartStrPtr;
+	char* __uartStrPtr;
 #endif
 
 #ifdef UART_RECEIVE_STRING_ENABLE
-char __uartBuffer[UART_MAX_STRING_LENGTH];
-uint8_t __uartBufferIndex = 0;
+	char __uartBuffer[UART_MAX_STRING_LENGTH];
+	uint8_t __uartBufferIndex = 0;
 #endif
 
 void uartInit(void) {
@@ -36,32 +36,32 @@ void uartSendString(char* str) {
 }
 
 #ifdef UART_SEND_STRING_ASYNC_ENABLE
-void uartSendStringAsync(char* str) {
-	__uartStrPtr = str;
-	UART1_ITConfig(UART1_IT_TXE, ENABLE);
-}
+	void uartSendStringAsync(char* str) {
+		__uartStrPtr = str;
+		UART1_ITConfig(UART1_IT_TXE, ENABLE);
+	}
 
-void uartTxComplete(void) {
-	if (*__uartStrPtr) {
-		UART1_SendData8(*__uartStrPtr++);
+	void uartTxComplete(void) {
+		if (*__uartStrPtr) {
+			UART1_SendData8(*__uartStrPtr++);
+		}
+		else {
+			UART1_ITConfig(UART1_IT_TXE, DISABLE);
+		}
 	}
-	else {
-		UART1_ITConfig(UART1_IT_TXE, DISABLE);
-	}
-}
 #endif
 
 #ifdef UART_RECEIVE_STRING_ENABLE
-void uartReceiveByte(uint8_t byte) {
-	if(byte == '\r' || __uartBufferIndex >= UART_MAX_STRING_LENGTH) {
-		__uartBuffer[__uartBufferIndex] = byte;
-		__uartBufferIndex = 0;
-		uartStringReceived(__uartBuffer);
+	void uartReceiveByte(uint8_t byte) {
+		if(byte == '\r' || __uartBufferIndex >= UART_MAX_STRING_LENGTH) {
+			__uartBuffer[__uartBufferIndex] = byte;
+			__uartBufferIndex = 0;
+			uartStringReceived(__uartBuffer);
+		}
+		else {
+			__uartBuffer[__uartBufferIndex++] = byte;
+		}
 	}
-	else {
-		__uartBuffer[__uartBufferIndex++] = byte;
-	}
-}
 #endif
 
 #if defined(UART_RECEIVE_STRING_ENABLE) || defined(UART_RECEIVE_BYTE_ENABLE)
